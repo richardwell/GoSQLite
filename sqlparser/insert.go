@@ -8,7 +8,11 @@ type insert struct {
 }
 
 //解析insert类型的sql语句
-//返回insert类型指针
+//参数：经过处理的正确sql语句
+//返回:insert类型指针
+//注释：正确sql语句
+//insert into T(id,name,info) value(1,'tom','babab');
+//insert into T(id) value(2);
 func parseInsert(sql string) (*insert, error) {
 	return nil, nil
 }
@@ -33,7 +37,7 @@ func (i *insert) GetAttribute() ([]string, error) {
 	return i.attribude, nil
 }
 
-//不要实现
+//不实现
 func (i *insert) GetAttributeType() ([]Type, error) {
 	return nil, InvokeError
 }
@@ -43,12 +47,12 @@ func (i *insert) GetValues() ([]interface{}, error) {
 	return i.values, nil
 }
 
-//不要实现
+//不实现
 func (i *insert) GetCondition() (*Where, error) {
 	return nil, InvokeError
 }
 
-//不要实现
+//不实现
 func (i *insert) GetConfig() ([][]string, error) {
 	return nil, InvokeError
 }

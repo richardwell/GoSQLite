@@ -9,7 +9,12 @@ type update struct {
 }
 
 //解析update类型的sql语句
-//返回update类型指针
+//参数：经过处理的正确sql语句
+//返回:update类型指针
+//注释：正确sql语句
+//update T set id=2 AND name='jok';
+//update T set name='tom' where id=3;
+//where 语句扔给 parseWhere() 解析，这里是 where id=3
 func parseUpdate(sql string) (*update, error) {
 	return nil, nil
 }
@@ -34,7 +39,7 @@ func (u *update) GetAttribute() ([]string, error) {
 	return u.attribude, nil
 }
 
-//不要实现
+//不实现
 func (u *update) GetAttributeType() ([]Type, error) {
 	return nil, InvokeError
 }
@@ -49,7 +54,7 @@ func (u *update) GetCondition() (*Where, error) {
 	return u.where, nil
 }
 
-//不要实现
+//不实现
 func (u *update) GetConfig() ([][]string, error) {
 	return nil, InvokeError
 }

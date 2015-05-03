@@ -7,7 +7,11 @@ type delete_ struct {
 }
 
 //解析delete类型的sql语句
-//返回delete类型指针
+//参数：经过处理的正确sql语句
+//返回：delete类型指针
+//注释：正确sql语句
+//delete from T where id=3;
+//where 语句扔给 parseWhere() 解析，这里是 where id=3
 func parseDelete(sql string) (*delete_, error) {
 	return nil, nil
 }
@@ -27,17 +31,17 @@ func (d *delete_) GetTable() ([]string, error) {
 	return str, nil
 }
 
-//不要实现
+//不实现
 func (d *delete_) GetAttribute() ([]string, error) {
 	return nil, InvokeError
 }
 
-//不要实现
+//不实现
 func (d *delete_) GetAttributeType() ([]Type, error) {
 	return nil, InvokeError
 }
 
-//不要实现
+//不实现
 func (d *delete_) GetValues() ([]interface{}, error) {
 	return nil, InvokeError
 }
@@ -47,7 +51,7 @@ func (d *delete_) GetCondition() (*Where, error) {
 	return d.where, nil
 }
 
-//不要实现
+//不实现
 func (d *delete_) GetConfig() ([][]string, error) {
 	return nil, InvokeError
 }

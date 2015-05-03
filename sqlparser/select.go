@@ -11,7 +11,14 @@ type select_ struct {
 }
 
 //解析select类型的sql语句
-//返回select类型指针
+//参数：经过处理的正确sql语句
+//返回:select类型指针
+//注释1:正确sql
+//select * from T;
+//select * from T where id=1001 and name='TOM';
+//select T1.id T2.name from T1,T2 where T1.id NOT IN (select id from T2) order by T1.id desc;
+//注释2:where后面的语句不在这里解析，即 where ... order by 之间的内容给 parseWhere() 解析，
+//传给parseWhere 的语句要包含 where 即：where T1.id NOT IN (select id from T2)
 func parseSelect(sql string) (*select_, error) {
 	return nil, nil
 }
@@ -21,7 +28,7 @@ func (s *select_) GetType() int {
 	return SELECT
 }
 
-//返回表名
+//返回表名 T/ T1,T2
 func (s *select_) GetTable() ([]string, error) {
 	if s.table == nil {
 		return nil, NilTableError
@@ -34,12 +41,12 @@ func (s *select_) GetAttribute() ([]string, error) {
 	return s.attribute, nil
 }
 
-//不要实现
+//不实现
 func (s *select_) GetAttributeType() ([]Type, error) {
 	return nil, InvokeError
 }
 
-//不要实现
+//不实现
 func (s *select_) GetValues() ([]interface{}, error) {
 	return nil, InvokeError
 }
