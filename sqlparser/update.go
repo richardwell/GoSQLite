@@ -55,6 +55,6 @@ func (u *update) GetCondition() (*Where, error) {
 }
 
 //不实现
-func (u *update) GetConfig() ([][]string, error) {
+func (u *update) GetConfig() (*Config, error) {
 	return nil, InvokeError
 }

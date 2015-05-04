@@ -59,8 +59,8 @@ func (s *select_) GetCondition() (*Where, error) {
 //select类型，IsDistinct 是否去掉重复元组，IsDesc 表示排序方式,OrderAttri根据哪个属性排序
 func (s *select_) GetConfig() (*Config, error) {
 	f := &Config{}
-	f.IsDesc = s.isDesc
-	f.IsDistinct = s.isDistinct
-	f.OrderAttri = s.orderAttri
+	f.Arg0 = s.isDistinct
+	f.Arg1 = s.isDesc
+	f.Arg3 = s.orderAttri
 	return f, nil
 }

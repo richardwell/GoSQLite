@@ -10,7 +10,7 @@ type droptable struct {
 //返回：droptable类型指针
 //注释：正确的sql如下
 //drop table T;
-func parseDrop(sql string) (*droptable, error) {
+func parseDroptable(sql string) (*droptable, error) {
 	return nil, nil
 }
 
@@ -50,6 +50,6 @@ func (d *droptable) GetCondition() (*Where, error) {
 }
 
 //不实现
-func (d *droptable) GetConfig() ([][]string, error) {
+func (d *droptable) GetConfig() (*Config, error) {
 	return nil, InvokeError
 }

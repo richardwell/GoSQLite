@@ -11,7 +11,7 @@ type dropindex struct {
 //返回：droptable类型指针
 //注释：正确的sql如下
 //drop index indexName on T;
-func parseDrop(sql string) (*dropindex, error) {
+func parseDropindex(sql string) (*dropindex, error) {
 	return nil, nil
 }
 
@@ -51,8 +51,8 @@ func (d *dropindex) GetCondition() (*Where, error) {
 }
 
 //drop index类型，IndexName 表示索引名 indexName
-func (d *dropindex) GetConfig() ([][]string, error) {
+func (d *dropindex) GetConfig() (*Config, error) {
 	f := &Config{}
-	f.IndexName = d.name
+	f.Arg3 = d.name
 	return f, nil
 }

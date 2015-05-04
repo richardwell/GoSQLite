@@ -14,7 +14,7 @@ type createindex struct {
 //注释：正确的sql如下
 //create index indexName on T(id);
 //create index indexName on T(id,name);
-func parseCreate(sql string) (*createindex, error) {
+func parseCreateindex(sql string) (*createindex, error) {
 	return nil, nil
 }
 
@@ -34,7 +34,7 @@ func (c *createindex) GetTable() ([]string, error) {
 }
 
 //返回各列属性名 id/id，name,就是要索引的属性名
-func (c *createindexe) GetAttribute() ([]string, error) {
+func (c *createindex) GetAttribute() ([]string, error) {
 	return c.attribude, nil
 }
 
@@ -56,6 +56,6 @@ func (c *createindex) GetCondition() (*Where, error) {
 //create index类型，IndexName 表示索引名
 func (c *createindex) GetConfig() (*Config, error) {
 	f := &Config{}
-	f.IndexName = c.name
+	f.Arg3 = c.name
 	return f, nil
 }

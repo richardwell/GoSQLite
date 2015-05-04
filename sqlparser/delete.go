@@ -52,6 +52,6 @@ func (d *delete_) GetCondition() (*Where, error) {
 }
 
 //不实现
-func (d *delete_) GetConfig() ([][]string, error) {
+func (d *delete_) GetConfig() (*Config, error) {
 	return nil, InvokeError
 }

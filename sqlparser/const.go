@@ -6,7 +6,8 @@ import (
 
 //sql语句类型标识
 const (
-	CREATETABLE = iota
+	USE = iota
+	CREATETABLE
 	CREATINDEX
 	DROPTABLE
 	DROPINDEX

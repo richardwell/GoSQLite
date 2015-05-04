@@ -18,7 +18,7 @@ type createtable struct {
 //create类型中 attriType 应这样实现
 //type_id:=Type{Type:func()int{return INT},Size:func()int{return 10}}
 //就是Type里面的函数在这里写
-func parseCreate(sql string) (*createtable, error) {
+func parseCreatetable(sql string) (*createtable, error) {
 	return nil, nil
 }
 
@@ -60,6 +60,6 @@ func (c *createtable) GetCondition() (*Where, error) {
 //createtable类型，PrimaryKey 表示主码属性列
 func (c *createtable) GetConfig() (*Config, error) {
 	f := &Config{}
-	f.PrimaryKey = c.primaryKey
+	f.Arg2 = c.primaryKey
 	return f, nil
 }

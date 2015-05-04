@@ -36,15 +36,14 @@ type Type struct {
 	Size func() int
 }
 
-//如果是create table类型，PrimaryKey 表示主码属性列
-//如果是create index或 drop index类型，IndexName 表示索引名
-//如果是select类型，IsDistinct 是否去掉重复元组，IsDesc 表示排序方式,OrderAttri根据哪个属性排序
+//如果是use类型，Arg3 表示数据库名
+//如果是create table类型，Arg2 表示主码属性列
+//如果是create index类型，Arg3 表示索引名
+//如果是drop index类型，Arg3 表示索引名
+//如果是select类型，Arg0 是否去掉重复元组，Arg1 表示排序方式, Arg3 表示根据哪个属性排序
 type Config struct {
-	PrimaryKey []string
-
-	IndexName string
-
-	IsDistinct bool
-	OrderAttri string
-	IsDesc     bool
+	Arg0 bool
+	Arg1 bool
+	Arg2 []string
+	Arg3 string
 }

@@ -53,6 +53,6 @@ func (i *insert) GetCondition() (*Where, error) {
 }
 
 //不实现
-func (i *insert) GetConfig() ([][]string, error) {
+func (i *insert) GetConfig() (*Config, error) {
 	return nil, InvokeError
 }
